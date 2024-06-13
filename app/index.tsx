@@ -1,10 +1,10 @@
 import { Stack, Link } from 'expo-router';
 
+import App from './authentication';
+
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import { ScreenContent } from '~/components/ScreenContent';
-
-import App from './authentication';
 
 export default function Home() {
   return (
