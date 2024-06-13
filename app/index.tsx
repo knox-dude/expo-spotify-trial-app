@@ -4,6 +4,8 @@ import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import { ScreenContent } from '~/components/ScreenContent';
 
+import App from './authentication';
+
 export default function Home() {
   return (
     <>
@@ -13,6 +15,7 @@ export default function Home() {
         <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
           <Button title="Show Details" />
         </Link>
+        <App />
       </Container>
     </>
   );
