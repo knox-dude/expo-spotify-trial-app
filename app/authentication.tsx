@@ -2,8 +2,10 @@ import axios from 'axios';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import Constants from 'expo-constants';
 import * as Crypto from 'expo-crypto';
+import * as Linking from 'expo-linking';
 import React, { useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+
 
 // Your Spotify credentials
 // const { CLIENT_ID, CLIENT_SECRET } = Constants.expoConfig?.extra || {};
@@ -71,7 +73,8 @@ export default function App() {
       clientId: CLIENT_ID,
       codeChallenge,
       scopes: ['user-read-email', 'user-top-read', 'playlist-read-private'],
-      redirectUri: 'http://localhost:8081/',
+      redirectUri: Linking.createURL('/callback'),
+      // redirectUri: 'http://localhost:8081/',
       // redirectUri: makeRedirectUri({
       //   scheme: 'your-app-scheme',
       // }),
@@ -96,7 +99,7 @@ export default function App() {
       new URLSearchParams({
         grant_type: 'authorization_code',
         code,
-        redirect_uri: makeRedirectUri({ scheme: 'my-expo-app' }),
+        redirect_uri: Linking.createURL('/callback'),
         client_id: CLIENT_ID,
         codeVerifier,
       }),
